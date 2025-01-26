@@ -5,7 +5,7 @@ import * as styles from "./welcome.css";
 
 export function Welcome() {
   const [username, setUsername] = useState("kazusa")
-  const [email, setEmail] = useState("abcd@discord.com")
+  const [email, setEmail] = useState("address@example.com")
   const [profileImage, setProfileImage] = useState("https://s3-alpha-sig.figma.com/img/4539/af1e/aa83bf2388bafe8f45e7485afe28c910?Expires=1738540800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=kDsXK-o6DbcppYV14tMkMuT987jmfPrJwRzv3HyUyv7tkxd90IrjiyAkLIC-T-u0apQEabKLsBQt880H4y1C-D-8nu8jl-G2EDWUdfsXJyTGdRLbl7sZjV5vvo8SF9XoClAhMr9RRlYDpyZ9Nzr5SlkFKlSXuioKzEdS89X20Ckn7UNjsf~WzWx~LfvziP-QsSpvaq7ZIUc17Rx31BECT~paet~Kgc5Nogqh7rFQ4pWz5PVfulhKyawbsKKfHra2iM0wkbFSIsJmKu97kJ9r-ZIkSlHOkrkQOxt6AjNY0Mg0-YjdNyw8O~iztFCWnYX41X9iklBGAg01-~~kSPBeEA__")
   const messageCount = "20000"
   const topActivity = "1"
@@ -23,7 +23,8 @@ export function Welcome() {
   const canvasWidth = 512
   const canvasHeight = 512
 
-  function changeImage(scaleChange: boolean) {
+
+function changeImage(scaleChange: boolean) {
     if (canvasRef.current==null) return
     const ctx = canvasRef.current.getContext('2d')
     if(ctx==null) return
@@ -85,7 +86,7 @@ export function Welcome() {
         {/* Editor */}
         <div className={styles.section}> 
           <div className={styles.formGroup}>
-            <label htmlFor="username" className={styles.label}>Username</label>
+            <label htmlFor="username" className={styles.label}>Username/Nickname</label>
             <input 
               type="text" 
               id="username" 

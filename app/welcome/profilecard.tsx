@@ -52,7 +52,10 @@ export default function ProfileCard({
             </div>
           </div>
           <div className={styles.bottomSection}>
-            <QRCodeSVG value={qrLink} fgColor="#fff" bgColor='transparent' height="4rem" width="4rem"/>
+            <div className={styles.qrCode}>
+            <QRCodeSVG value={qrLink} fgColor="#fff" bgColor='transparent' height="100%" width="100%"/>
+
+            </div>
             <div className={styles.statsContainer}>
               <p className={styles.statsText}>
                 <span className={styles.normalText}>{messageCount}</span> 

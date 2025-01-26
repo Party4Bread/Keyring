@@ -12,8 +12,7 @@ export const container = style({
     'drop-shadow(-2px 2px 6px #68E643) '+
     'drop-shadow(-2px -2px 6px #E543C9) '+
     'drop-shadow(2px -2px 6px #E6A743) '
-  )
-
+  ),
 });
 
 export const profileImage = style({
@@ -93,7 +92,8 @@ export const bottomSection = style({
 
 export const qrCode = style({
   width: '4rem', // w-16
-  height: '4rem' // h-16
+  height: '4rem', // h-16
+  padding: '0.2rem'
 });
 
 export const statsContainer = style({
