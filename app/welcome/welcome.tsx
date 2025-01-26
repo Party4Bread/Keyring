@@ -16,6 +16,7 @@ export function Welcome() {
   const [imageRotation, setImageRotation] = useState(0)
   const [scaledImage, setScaledImage] = useState<string | null>(null)
   const [isImageLoading, setIsImageLoading] = useState<boolean>(false)
+  const [qrLink, setQrLink] = useState<string>("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
   
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -73,6 +74,7 @@ export function Welcome() {
         <div className={styles.section}>
           <ProfileCard 
             username={username} email={email} 
+            qrLink={qrLink}
             profileImage={scaledImage} 
             messageCount={messageCount} 
             topActivity={topActivity} 
@@ -99,6 +101,16 @@ export function Welcome() {
               id="email" 
               value={email} 
               onChange={(e) => setEmail(e.target.value)} 
+              className={styles.input}
+            />
+          </div>
+          <div className={styles.formGroup}>
+            <label htmlFor="qrlink" className={styles.label}>Link for QR Code</label>
+            <input 
+              type="text" 
+              id="qrlink" 
+              value={qrLink} 
+              onChange={(e) => setQrLink(e.target.value)} 
               className={styles.input}
             />
           </div>

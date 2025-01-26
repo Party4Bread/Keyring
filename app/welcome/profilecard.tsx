@@ -1,5 +1,5 @@
-import * as styles from './profilecard.css'
-import testQR from "./qr.svg"
+import { QRCodeSVG } from 'qrcode.react';
+import * as styles from './profilecard.css';
 
 interface ProfileCardProps {
   username: string;
@@ -8,11 +8,13 @@ interface ProfileCardProps {
   messageCount: string;
   topActivity: string;
   mostActiveChannel: string;
+  qrLink: string;
 }
 
 export default function ProfileCard({
   username, 
   email, 
+  qrLink,
   profileImage, 
   messageCount, 
   topActivity, 
@@ -41,7 +43,7 @@ export default function ProfileCard({
             </div>
           </div>
           <div className={styles.bottomSection}>
-            <img src={testQR} className={styles.qrCode} alt="QR Code" />
+            <QRCodeSVG value={qrLink} fgColor="#fff" bgColor='transparent' height="4rem" width="4rem"/>
             <div className={styles.statsContainer}>
               <p className={styles.statsText}>
                 <span className={styles.normalText}>{messageCount}</span> 
