@@ -15,6 +15,7 @@ export function Welcome() {
   const [imageScale, setImageScale] = useState(1)
   const [imageRotation, setImageRotation] = useState(0)
   const [scaledImage, setScaledImage] = useState<string | null>(null)
+  const [isImageLoading, setIsImageLoading] = useState<boolean>(false)
   
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -25,6 +26,7 @@ export function Welcome() {
     if (canvasRef.current==null) return
     const ctx = canvasRef.current.getContext('2d')
     if(ctx==null) return
+    setIsImageLoading(true)
     const img = new Image()
     img.crossOrigin = "anonymous"
     img.onload = () => {
@@ -42,7 +44,12 @@ export function Welcome() {
         0,0,canvasHeight,canvasWidth);
       ctx?.restore();
       setScaledImage(canvasRef.current?.toDataURL() ?? null)
+      setIsImageLoading(false)
       console.log('image loaded')
+    }
+    img.onerror = () => {
+      setIsImageLoading(false);
+      console.error('Image failed to load');
     }
     img.src = profileImage    
   }

@@ -7,12 +7,12 @@ export const container = style({
   width: '24rem',
   height: '24rem',
   overflow: 'hidden',
-  // filter: (
-  //   'drop-shadow(2px 2px 6px #4398E6) '+
-  //   'drop-shadow(-2px 2px 6px #68E643) '+
-  //   'drop-shadow(-2px -2px 6px #E543C9) '+
-  //   'drop-shadow(2px -2px 6px #E6A743) '
-  // )
+  filter: (
+    'drop-shadow(2px 2px 6px #4398E6) '+
+    'drop-shadow(-2px 2px 6px #68E643) '+
+    'drop-shadow(-2px -2px 6px #E543C9) '+
+    'drop-shadow(2px -2px 6px #E6A743) '
+  )
 
 });
 
@@ -44,16 +44,16 @@ export const bottomGradient = style({
   position: 'absolute',
   bottom: 0,
   width: '100%',
-  height: '11rem', // h-44
-  background: 'linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5))'
+  height: '45%', // h-44
+  background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.00) -1.85%, rgba(0, 0, 0, 0.70) 101.85%)'
 });
 
 export const leftGradient = style({
   position: 'absolute',
   left: 0,
-  width: '11rem', // w-44
+  width: '45%', // w-44
   height: '100%',
-  background: 'linear-gradient(to left, transparent, rgba(0, 0, 0, 0.5))'
+  background: 'linear-gradient(to left, rgba(0, 0, 0, 0.00) -1.85%, rgba(0, 0, 0, 0.70) 101.85%)'
 });
 
 export const profileContainer = style({
