@@ -73,6 +73,7 @@ export const profileText = style({
   wordWrap: 'break-word',
   maxWidth: '75%',
   padding: '0.5rem', // p-2
+  lineHeight: '1.33'
 });
 
 export const username = style({
@@ -106,7 +107,8 @@ export const statsContainer = style({
 
 export const statsText = style({
   fontSize: '0.875rem', // text-sm
-  textAlign: 'right'
+  textAlign: 'right',
+  lineHeight: '1.33'
 });
 
 export const normalText = style({
