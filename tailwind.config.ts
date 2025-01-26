@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 export default {
   content: ["./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}"],
@@ -6,17 +7,24 @@ export default {
     extend: {
       fontFamily: {
         sans: [
-          '"Inter"',
-          "ui-sans-serif",
-          "system-ui",
+          "Lato",
+          "Spoqa Han Sans Neo",
           "sans-serif",
-          '"Apple Color Emoji"',
-          '"Segoe UI Emoji"',
-          '"Segoe UI Symbol"',
-          '"Noto Color Emoji"',
         ],
+
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(({ addUtilities }) => {
+      addUtilities({
+        ".writing-vertical": {
+          "writing-mode": "vertical-rl",
+          "& sub": {
+            bottom: "0",
+            right: "0.25em",
+          },
+        },
+      });
+    }),],
 } satisfies Config;
