@@ -95,7 +95,7 @@ export function Welcome() {
             />
           </div>
           <div className={styles.formGroup}>
-            <label htmlFor="email" className={styles.label}>Email</label>
+            <label htmlFor="email" className={styles.label}>email@domain.com or @username</label>
             <input 
               type="text" 
               id="email" 

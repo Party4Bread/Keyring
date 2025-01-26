@@ -37,8 +37,17 @@ export default function ProfileCard({
             <div className={styles.profileText}>
               <h2 className={styles.username}>{username}</h2>
               <p>
-                <span className={styles.normalText}>{email.split("@")[0]}</span>
-                <span className={styles.lightText}>@{email.split("@")[1]}</span>
+                {email.startsWith('@') ? (
+                  <p>
+                    <span className={styles.lightText}>@</span>
+                    <span className={styles.normalText}>{email.slice(1)}</span>
+                  </p>
+                ) : (
+                  <p>
+                    <span className={styles.normalText}>{email.split("@")[0]}</span>
+                    <span className={styles.lightText}>@{email.split("@")[1]}</span>
+                  </p>
+                )}
               </p>
             </div>
           </div>
