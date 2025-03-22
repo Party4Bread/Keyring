@@ -88,3 +88,16 @@ export const label = style({
     }
   }
 }); 
+
+export const submitButton = style({
+  width: "100%",
+  height: "2.5rem",
+  padding: "0.5rem",
+  borderRadius: "0.375rem",
+  backgroundColor: "#f70",
+  cursor: "pointer",
+  color: "#fff",
+  fontWeight: "500",
+  fontSize: "0.875rem"
+});
+

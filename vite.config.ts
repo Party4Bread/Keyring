@@ -12,4 +12,9 @@ export default defineConfig({
     },
   },
   plugins: [reactRouter(), tsconfigPaths(), vanillaExtractPlugin()],
+  server: {
+    proxy: {
+      '/api': 'http://localhost:3001'
+    }
+  }
 });
