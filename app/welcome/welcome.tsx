@@ -67,31 +67,33 @@ export function Welcome() {
     changeImage(true)
   }, [_imageScale])
 
-  const handleSubmit = async () => {
+  const handleText = async () => {
     try {
-      const response = await fetch('/api/profile', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username,
-          email,
-          qrLink,
-          profileImage: scaledImage,
-          imageX,
-          imageY,
-          imageScale,
-          imageRotation
-        })
+      //copy to clipboard
+      const json = JSON.stringify({
+        username,
+        email,
+        qrLink,
+        imageX,
+        imageY,
+        imageScale,
+        imageRotation
       })
-
-      const result = await response.json()
-      if (result.success) {
-        console.log('Profile saved successfully:', result.filename)
-      } else {
-        console.error('Failed to save profile')
-      }
+      navigator.clipboard.writeText("```json\n"+json+"```")
+      alert("Profile copied to clipboard")
+    } catch (error) {
+      console.error('Error saving profile:', error)
+    }
+  }
+  const handleScreenshot = async () => {
+    try {
+      canvasRef.current?.toBlob(async (blob) => {
+        if (blob == null) return
+        await navigator.clipboard.write([new ClipboardItem({
+          'image/png': blob
+        })])
+        alert("Preview copied to clipboard")
+      })
     } catch (error) {
       console.error('Error saving profile:', error)
     }
@@ -219,8 +221,9 @@ export function Welcome() {
               </div>
             </div>
           </div>
-          <div className={styles.section}>
-            <input type="submit" className={styles.submitButton} onClick={handleSubmit} />
+          <div className={styles.section} style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
+            <input type="submit" value={"내용 복사"} className={styles.submitButton} onClick={handleText} />
+            <input type="submit" value={"프리뷰 복사"} className={styles.submitButton} onClick={handleScreenshot} />
           </div>
         </div>
       </main>

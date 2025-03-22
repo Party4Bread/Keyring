@@ -1,6 +1,7 @@
 import Fastify from 'fastify'
 import fs from 'fs/promises'
 import path from 'path'
+import { generateProfileSVG } from './svg-generator.tsx'
 
 // Create Fastify instance
 const fastify = Fastify({
@@ -38,12 +39,24 @@ fastify.post('/api/profile', async (request, reply) => {
       JSON.stringify(data, null, 2)
     )
 
+    const { svg, html } = await generateProfileSVG(data)
+    await fs.writeFile(
+      path.join(dataDir, `${filename}.svg`),
+      svg
+    )
+    await fs.writeFile(
+      path.join(dataDir, `${filename}.html`),
+      html
+    )
     return { success: true, filename }
   } catch (error) {
     fastify.log.error(error)
     return reply.status(500).send({ error: 'Failed to save profile data' })
   }
 })
+
+
+
 
 // Start the server
 const start = async () => {
