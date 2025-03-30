@@ -1,7 +1,6 @@
 import { useDeferredValue, useEffect, useRef, useState } from "react";
 import ProfileCard from "./profilecard";
 import * as styles from "./welcome.css";
-import { useNavigate } from "react-router"
 
 export function Welcome() {
   const [username, setUsername] = useState("kazusa")
@@ -215,6 +214,50 @@ export function Welcome() {
                   step="0.01"
                   value={imageRotation}
                   onDoubleClick={(e) => setImageRotation(0)}
+                  onChange={(e) => setImageRotation(parseFloat(e.target.value))}
+                  className={styles.input}
+                />
+              </div>
+            </div>
+          </div>
+          <div className={styles.section}>
+            <div className={styles.formGroup} style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
+              <div>
+                <label htmlFor="x_text" className={styles.label}>Image X</label>
+                <input
+                  type="text"
+                  id="x_text"
+                  value={imageX}
+                  onChange={(e) => setImageX(parseFloat(e.target.value))}
+                  className={styles.input}
+                />
+              </div>
+              <div>
+                <label htmlFor="y_text" className={styles.label}>Image Y</label>
+                <input
+                  type="text"
+                  id="y_text"
+                  value={imageY}
+                  onChange={(e) => setImageY(parseFloat(e.target.value))}
+                  className={styles.input}
+                />
+              </div>
+              <div>
+                <label htmlFor="scale_text" className={styles.label}>Image Scale</label>
+                <input
+                  type="text"
+                  id="scale_text"
+                  value={imageScale}
+                  onChange={(e) => setImageScale(parseFloat(e.target.value))}
+                  className={styles.input}
+                />
+              </div>
+              <div>
+                <label htmlFor="rotation_text" className={styles.label}>Image Rotation</label>
+                <input
+                  type="text"
+                  id="rotation_text"
+                  value={imageRotation}
                   onChange={(e) => setImageRotation(parseFloat(e.target.value))}
                   className={styles.input}
                 />
