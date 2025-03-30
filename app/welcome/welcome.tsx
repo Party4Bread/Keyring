@@ -98,6 +98,17 @@ export function Welcome() {
     }
   }
 
+  const handleNumberInput = (value: string, setter: React.Dispatch<React.SetStateAction<string>>) => {
+    if (value === '' || value === '-' || /^-?\d*\.?\d*$/.test(value)) {
+      setter(value)
+    }
+  }
+
+  const parseNumberInput = (value: string): number => {
+    const parsed = parseFloat(value)
+    return isNaN(parsed) ? 0 : parsed
+  }
+
   return (
     <>
       <canvas ref={canvasRef} width={canvasWidth} height={canvasHeight} style={{ width: '0', height: '0' }}></canvas>
@@ -228,7 +239,8 @@ export function Welcome() {
                   type="text"
                   id="x_text"
                   value={imageX}
-                  onChange={(e) => setImageX(parseFloat(e.target.value))}
+                  onChange={(e) => handleNumberInput(e.target.value, setImageX)}
+                  onBlur={() => setImageX(parseNumberInput(imageX).toString())}
                   className={styles.input}
                 />
               </div>
@@ -238,7 +250,8 @@ export function Welcome() {
                   type="text"
                   id="y_text"
                   value={imageY}
-                  onChange={(e) => setImageY(parseFloat(e.target.value))}
+                  onChange={(e) => handleNumberInput(e.target.value, setImageY)}
+                  onBlur={() => setImageY(parseNumberInput(imageY).toString())}
                   className={styles.input}
                 />
               </div>
@@ -248,7 +261,8 @@ export function Welcome() {
                   type="text"
                   id="scale_text"
                   value={imageScale}
-                  onChange={(e) => setImageScale(parseFloat(e.target.value))}
+                  onChange={(e) => handleNumberInput(e.target.value, setImageScale)}
+                  onBlur={() => setImageScale(parseNumberInput(imageScale).toString())}
                   className={styles.input}
                 />
               </div>
@@ -258,7 +272,8 @@ export function Welcome() {
                   type="text"
                   id="rotation_text"
                   value={imageRotation}
-                  onChange={(e) => setImageRotation(parseFloat(e.target.value))}
+                  onChange={(e) => handleNumberInput(e.target.value, setImageRotation)}
+                  onBlur={() => setImageRotation(parseNumberInput(imageRotation).toString())}
                   className={styles.input}
                 />
               </div>
